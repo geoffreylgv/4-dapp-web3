@@ -1,0 +1,18 @@
+/dapp/node_modules
+/dapp/.env
+/webapp/node_modules
+
+# Hardhat files
+/dapp/cache
+/dapp/artifacts
+
+# TypeChain files
+/dapp/typechain
+/dapp/typechain-types
+
+# solidity-coverage files
+/dapp/coverage
+/dapp/coverage.json
+
+# Hardhat Ignition default folder for deployments against a local node
+/dapp/ignition/deployments/chain-31337
