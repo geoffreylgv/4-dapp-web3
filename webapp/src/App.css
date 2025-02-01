@@ -1,31 +1,138 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Main App Container */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Input Section */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.input-container input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-container input:focus {
+  border-color: #007bff;
+}
+
+.input-container button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.input-container button:hover {
+  background-color: #0056b3;
+}
+
+.input-container button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+/* Students Display (Cards) */
 .students-cards {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  margin-top: 20px;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 .student-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 220px;
   padding: 20px;
-  background-color: #f9f9f9;
-  width: 200px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.student-card:hover {
+  transform: translateY(-10px);
 }
 
 .student-card h3 {
-  font-size: 18px;
+  font-size: 1.2rem;
+  color: #333;
   margin-bottom: 10px;
 }
 
 .student-card p {
-  font-size: 14px;
+  font-size: 1rem;
   color: #555;
+}
+
+/* Alert Message */
+.alert {
+  display: none;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.alert.error {
+  background-color: #dc3545;
+}
+
+.alert.success {
+  background-color: #28a745;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+  .input-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .students-cards {
+    flex-direction: column;
+    align-items: center;
+  }
 }
