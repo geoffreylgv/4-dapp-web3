@@ -41,6 +41,7 @@ function App() {
       const transaction = await contract.registerStudent(studentId, studentName);
       await transaction.wait();
       alert(`${studentName} is now registered`);
+      getAllStudents(); // Fetch updated list after registration
     } catch (err) {
       console.log(err);
       alert(`Transaction failed: ${err}`);
@@ -60,6 +61,7 @@ function App() {
       const transaction = await contract.removeStudent(studentId);
       await transaction.wait();
       alert(`${studentName} is now removed`);
+      getAllStudents(); // Fetch updated list after removal
     } catch (err) {
       console.log(err);
       alert(`Transaction failed: ${err}`);
@@ -79,10 +81,9 @@ function App() {
         })
       );
       setStudents(studentsData);
-      alert('Students list fetched');
     } catch (err) {
       console.log(err);
-      alert(`Transaction failed: ${err}`);
+      alert(`Failed to fetch students: ${err}`);
     }
   }
 
@@ -102,20 +103,22 @@ function App() {
         <button onClick={registerStudent}>Register Student</button>
       </div>
       <div>
-        <input
-          type="text"
-          placeholder="Enter student ID"
-          onChange={(e) => SetStudentId(e.target.value)}
-        />
         <button onClick={removeStudent}>Remove Student</button>
       </div>
+
+      {/* Button to get all students */}
       <div>
         <button onClick={getAllStudents}>Get All Students</button>
-        <ul>
-          {students.map((student) => (
-            <li key={student.id}>{`ID: ${student.id}, Name: ${student.name}`}</li>
-          ))}
-        </ul>
+      </div>
+
+      {/* Display students in cards */}
+      <div className="students-cards">
+        {students.map((student) => (
+          <div key={student.id} className="student-card">
+            <h3>Student ID: {student.id}</h3>
+            <p>Student Name: {student.name}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
